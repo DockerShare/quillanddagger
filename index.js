@@ -38,7 +38,7 @@ client.on("message", function(message) {
                 let authorID = message.author.id;
                 let authorName = authorNames.getName();
                 registeredUsers[authorID] = authorName;
-                fs.appendFileSync("./Files/authorData.txt", authorID+"="+authorName+"|"+message.author.username);
+                fs.appendFileSync("./Files/authorData.txt", authorID+"="+authorName+"|"+message.author.username+"\n");
                 message.reply("Registriert als: " + authorName + "!");
                 message.reply("Regeln:\n1. Schreibe bis zum 31.12 eine Kurzgeschichte (ca. 3-10 Seiten) und schicke sie im odt-Format an diesen Bot\n2. Die Anmeldung läuft bis zum 09.12 23:59. Am Tag darauf wird das Thema bekanntgegeben. Die Geschichte MUSS sich an dieses Thema halten. Alles was jedoch nicht explizit erwähnt wird, darf durch den Autor individuell interpretiert werden.\n3. Nach dem Einsendeschluss wird deine Geschichte an alle Teilnehmer geschickt und von diesen gelesen und bewertet.\n" 
                 + "4. Deine Geschichte braucht eine Titelseite. Auf dieser steht der Titel deiner Kurzgeschichte, sowie dein Alias (WICHTIG: Nur dein Alias! Die Bewertung soll anonym erfolgen. Von wem welche Geschichte ist wird erst bei der Bekanntgabe der Ergebnisse veröffentlicht)\n5. Bis zum Einsendeschluss kannst du beliebig oft abgeben. Deine letzte Abgabe zählt.\n\n##Dies ist der erste Druchlauf. Die Chancen stehen gut, dass nicht alles so funktioniert wie es soll. Bei Fragen melde dich bitte bei CookieJ4R#4781");
