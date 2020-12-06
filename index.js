@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const MessageAttachment = require("discord.js");
-const config = require("./config.json");
 const authorNames = require("./generateAuthorName");
 const fs = require('fs');
 const https = require('https');
