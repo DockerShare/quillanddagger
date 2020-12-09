@@ -13,7 +13,7 @@ const client = new Discord.Client();
 const abgabeschluss = new Date('December 31, 2020 23:59:00');
 const themaAusgabe = new Date('December 9, 2020 23:59:00');
 const bewertungschluss = new Date('January 7, 2021 23:59:00');
-const thema = "Jeder Mensch hat bei der Geburt eine Chance von 1:1.000.000 eine Affinität für Magie zu besitzen. Auf Grund der politischen und strategischen Wichtigkeit dieser 'Milos' gennanten Menschen werden sie massiv unter Druck gesetzt und gezwungen ab einem Alter von 12 Jahren in die Streitkräfte ihres jeweiligen Landes einzutreten.";
+const thema = "Jeder Mensch hat bei der Geburt eine Chance von 1:1.000.000 eine Affinität für Magie zu besitzen. Auf Grund der politischen und strategischen Wichtigkeit dieser Personen, werden sie massiv unter Druck gesetzt und gezwungen ab einem Alter von 12 Jahren in die Streitkräfte ihres jeweiligen Landes einzutreten.";
 
 authorNames.loadUsedNames();
 loadRegisteredUsers();
@@ -93,7 +93,7 @@ client.on("message", function(message) {
             case "announcetheme":
                 if(message.author.id.toString() != "197448955288748032") return;
                 Object.keys(registeredUsers).forEach(autor => {
-                    client.users.cache.get(autor).send("Das Thema/Setting der Geschichte ist: " + thema+ "\n");
+                    client.users.cache.get(autor).send("Das Thema/Setting der Geschichte ist: " + thema+ "\nDas Thema/Setting ist mit Absicht sehr unspezifisch um viele unterschiedliche Geschichten zu ermöglichen. Viel Spass! Abgabeschluss: 31.12");
                 })
                 break;
             case "getabgaben":
@@ -125,6 +125,14 @@ client.on("message", function(message) {
                 try{
                     client.users.cache.get(message.author.id).send(attachment);
                 }catch(exception){}
+                break;
+            case "getloadedautors":
+                if(message.author.id.toString() != "197448955288748032") return;
+                var authors = "";
+                registeredUsers.forEach(u => {
+                    authors += u + "\n";
+                })
+                client.users.cache.get(message.author.id).send(authors);
                 break;
         }
     }else if(message.attachments.size > 0){
