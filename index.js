@@ -179,6 +179,7 @@ function loadRegisteredUsers(){
     var text = fs.readFileSync("./Files/authorData.txt").toString();
     var textByLine = text.split("\n")
     for(var i = 0; i < textByLine.length; i++){
+        if(textByLine.toString().trim() == "") continue;
         var userPair = textByLine[i].split("=");
         console.log(userPair[0] + " " + userPair[1]);
         registeredUsers[userPair[0]] = userPair[1];
