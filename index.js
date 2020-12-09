@@ -13,7 +13,7 @@ const client = new Discord.Client();
 const abgabeschluss = new Date('December 31, 2020 23:59:00');
 const themaAusgabe = new Date('December 9, 2020 23:59:00');
 const bewertungschluss = new Date('January 7, 2021 23:59:00');
-const thema = "Jeder Mensch hat bei der Geburt eine Chance von 1:1.000.000 eine Affinität für Magie zu besitzen. Auf Grund der politischen und strategischen Wichtigkeit dieser Personen, werden sie massiv unter Druck gesetzt und gezwungen ab einem Alter von 12 Jahren in die Streitkräfte ihres jeweiligen Landes einzutreten.";
+const thema = "Jeder Mensch hat bei der Geburt eine Chance von 1:1.000.000 eine Affinität für Magie zu besitzen. Auf Grund der politischen und strategischen Wichtigkeit dieser Personen werden sie aufgespürt, ihrer Familie weggenommen und gezwungen ab einem Alter von 12 Jahren in die Streitkräfte ihres jeweiligen Landes einzutreten.";
 
 authorNames.loadUsedNames();
 loadRegisteredUsers();
