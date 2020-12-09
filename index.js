@@ -74,7 +74,7 @@ client.on("message", function(message) {
                 if(message.author.id.toString() != "197448955288748032") return;
                 var files = fs.readdirSync('./Files/Abgaben');
                 Object.keys(registeredUsers).forEach(autor => {
-                    if(autor != null && autor != undefined){
+                    if(autor != null && registeredUsers[autor] != undefined){
                     var id = autor;
                     var name = registeredUsers[autor];
                     client.users.cache.get(id).send("Die Abgabezeit ist vorbei! Hier sind die Arbeiten der anderen Autoren!\nBitte lese sie gut durch und schreibe in EIN .odt Dokument kleine Kritiken & Bewertungen (0-10) zu den Arbeiten\n")
@@ -95,7 +95,7 @@ client.on("message", function(message) {
             case "announcetheme":
                 if(message.author.id.toString() != "197448955288748032") return;
                 Object.keys(registeredUsers).forEach(autor => {
-                    if(autor != null && autor != undefined)
+                    if(autor != null && registeredUsers[autor] != undefined)
                         client.users.cache.get(autor).send("Das Thema/Setting der Geschichte ist: " + thema+ "\nDas Thema/Setting ist mit Absicht sehr unspezifisch um viele unterschiedliche Geschichten zu ermöglichen. Viel Spass! Abgabeschluss: 31.12");
                 })
                 break;
@@ -131,9 +131,9 @@ client.on("message", function(message) {
                 break;
             case "getloadedautors":
                 if(message.author.id.toString() != "197448955288748032") return;
-                var authors = "Authors: \n";
+                var authors = "Authorlist: \n";
                 Object.keys(registeredUsers).forEach(u => {
-                    if(u !== null && u !== undefined)
+                    if(u != null && registeredUsers[u] != undefined)
                         authors += u + ":" + registeredUsers[u] + "\n";
                 })
                 client.users.cache.get(message.author.id).send(authors);
