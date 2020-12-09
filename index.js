@@ -129,8 +129,8 @@ client.on("message", function(message) {
             case "getloadedautors":
                 if(message.author.id.toString() != "197448955288748032") return;
                 var authors = "Authors: ";
-                registeredUsers.forEach(u => {
-                    authors += u + "\n";
+                Object.keys(registeredUsers).forEach(u => {
+                    authors += registeredUsers[u] + "\n";
                 })
                 client.users.cache.get(message.author.id).send(authors);
                 break;
