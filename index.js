@@ -142,8 +142,7 @@ client.on("message", function(message) {
                 })
                 client.users.cache.get(message.author.id).send(authors);
                 break;
-            case "testtheme":
-                if(message.author.id.toString() != "197448955288748032") return;
+            case "theme":
                 try{
                     client.users.cache.get(message.author.id).send("Das Thema/Setting der Geschichte ist: \n" + thema+ "\n\nDas Thema/Setting ist mit Absicht sehr unspezifisch um viele unterschiedliche Geschichten zu ermöglichen. Beachte, dass die Geschichte nich unbedingt in sich geschlossen sein muss. Offene Enden, Erster Teil einer längeren Geschichte, usw. sind durchaus erlaubt. Viel Spass! Abgabeschluss: 31.12 23:59");
                 }catch(exception){}
