@@ -71,10 +71,6 @@ client.on("message", function(message) {
                 message.reply("Bewertung erfolgreich!");
                 break;
             case "abgaben":
-                if(new Date() < abgabeschluss){
-                    message.reply("Bitte warte bis die Abgabefrist verstrichen ist...");
-                    return;
-                }
                 if(registeredUsers[message.author.id] == null){
                     message.reply("Leider scheinst du diesesmal nicht teilgenommen zu haben.");
                     return;
