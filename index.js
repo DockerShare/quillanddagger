@@ -70,6 +70,34 @@ client.on("message", function(message) {
                 download(message.attachments.first().url, "./Files/Bewertungen/" + registeredUsers[message.author.id] + ".odt")
                 message.reply("Bewertung erfolgreich!");
                 break;
+            case "abgaben":
+                if(new Date() < abgabeschluss){
+                    message.reply("Bitte warte bis die Abgabefrist verstrichen ist...");
+                    return;
+                }
+                if(registeredUsers[message.author.id] == null){
+                    message.reply("Leider scheinst du diesesmal nicht teilgenommen zu haben.");
+                    return;
+                }
+                var files = fs.readdirSync('./Files/Abgaben');
+                Object.keys(registeredUsers).forEach(autorID => {
+                    if(autorID != null && registeredUsers[autorID] != undefined){
+                    var name = registeredUsers[autorID];
+                    message.reply("Hier sind die Arbeiten der anderen Autoren!\nBitte lese sie gut durch und schreibe in EIN .odt Dokument kleine Kritiken & Bewertungen (0-10) zu den Arbeiten\n")
+                    message.reply("Beispiel:\nAutor der Geschichte: SleepySquirrel\nStory: Ich und meine Nuss\nDie Arbeit war super. Die Charaktere waren sehr gut durchdacht und lebhaft. Besonders gefallen hat mir die Nuss. Nur die Welt war mir nicht gut genug durchdacht. Ich würde vorschlagen, dass die Auswirkungen der Nussokalypse noch mehr verdeutlicht werden.\nBewertung: 8/10");
+                    message.reply("Abgeben kannst du mit '!bewertung' und der Einsendeschluss für die Bewertungen ist der 07.01.2021 23:59");
+                    for(var i = 0; i < files.length; i++){
+                        if(files[i].split('.')[0] == name){
+                            continue;
+                        }
+                        let attachment = new Discord.MessageAttachment("./Files/Abgaben/" + files[i]);
+                        try{
+                            message.reply(attachment);
+                        }catch(exception){}
+                    }
+                    }
+                })
+                break;
             case "endcontest":
                 if(message.author.id.toString() != "197448955288748032") return;
                 var files = fs.readdirSync('./Files/Abgaben');
